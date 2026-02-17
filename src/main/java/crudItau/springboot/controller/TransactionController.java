@@ -30,7 +30,7 @@ public class TransactionController {
     public ResponseEntity<Void> createTransaction(@Valid @RequestBody TransactionRequest request){
         //TODO: process post request 
         if (request.getDataHora().isAfter(OffsetDateTime.now())){
-            return ResponseEntity.unprocessableEntity().build();
+            return ResponseEntity.unprocessableContent().build();
         }
         transactionService.addTransaction(new Transaction(request.getValor(), request.getDataHora()));
 
